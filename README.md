@@ -21,6 +21,7 @@
 以上步驟即完成了`mongodb`和`mongo-express`的啟動。
 
 ## 三、`scrapy`架構
+## 1、`scrapy`架構
 ```
 ├── baikecom_spider
 │   ├── __init__.py
@@ -34,6 +35,8 @@
 ├── baikecom_spider.log
 └── scrapy.cfg
 ```
+
+## 2、注意事項
 需要注意的是，百度百科有兩個版本，一個是簡體版，網址是`baike.baidu.com`，另一個是繁體版，網址是`baihe.baidu.hk`，兩者的網頁結構不同，因此需要分別爬取。主要還是Title和Subtitle的不一樣。分別如下：
 
 **繁體版百度香港**
@@ -46,7 +49,10 @@
 '//dd[contains(@class, "lemmaWgt-lemmaTitle-title") and contains(@class, "J-lemma-title")]/span/h1/text()'
 '//dl[contains(@class, "lemmaWgt-lemmaTitle") and contains(@class, "lemmaWgt-lemmaTitle-")]/div[@class="lemma-desc"]/text()'
 ```
-其它看程式
+其它看程式。
+
+## 3、性能
+**每小時約15萬個詞條**。本來怕檔案太大，因此`mongodb`本來放在32TB的HDD中，後來發現百度號稱3000萬個詞條，最多佔硬碟空間約100GB，因此改放在SSD中，NVME SSD的大小為4TB
 
 ## 四、參考資料
 * [Mongodb在Python下的使用](https://www.1ju.org/mongodb/mongodb-python)
