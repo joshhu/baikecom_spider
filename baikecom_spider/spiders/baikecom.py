@@ -37,6 +37,6 @@ class BaikecomSpider(scrapy.Spider):
             '//a[contains(@href, "/item/")]/@href').re(r'/item/[A-Za-z0-9%\u4E00-\u9FA5]+'))
         for item in items:
             new_url = 'https://baike.baidu.com' + urllib.parse.unquote(item)
-            new_item_name = re.sub(
-                '/', '', re.sub('https://baike.baidu.com/item/', '', new_url))
+            # new_item_name = re.sub(
+            #     '/', '', re.sub('https://baike.baidu.com/item/', '', new_url))
             yield scrapy.Request(new_url, callback=self.parse)
