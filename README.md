@@ -8,7 +8,11 @@
 * Visual Studio Code從Windows11遠端連接至Ubuntu
 * Docker，用來啟動`mongodb`資料庫和`mongo-express`從網頁查看資料庫。
 * python 3.8.13
-* scrapy
+* scrapy, `pip install scrapy`
+* pymongo, `pip install pymongo`
+
+其它就正常`conda`的套件。
+
 
 ### 2、Docker環境
 由於`mongodb`的儲存希望持久化，因此將資料庫實際資料的部分存放在container之外。一開始使用bind mount對應到硬碟的某個資料夾，但發現把container殺掉之後再開新的`mongodb` container，就無法找到`collection`，因此使用docker的`volume`進行存放。建立步驟如下
@@ -61,6 +65,9 @@
 
 ## 3、性能
 **每小時約15萬個詞條**。本來怕檔案太大，因此`mongodb`本來放在32TB的HDD中，後來發現百度號稱3000萬個詞條，最多佔硬碟空間約150GB，因此改放在SSD中，NVME SSD的大小為4TB。簡體加繁體約300GB，因此應該可以放下。
+
+## 4、執行
+將`baikecom_spider`放在`scrapy`的專案資料夾中，執行`scrapy crawl baikecom`即可。
 
 ## 四、參考資料
 * [Mongodb在Python下的使用](https://www.1ju.org/mongodb/mongodb-python)
