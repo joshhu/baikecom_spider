@@ -55,7 +55,7 @@
 '//dl[contains(@class, "lemmaWgt-lemmaTitle") and contains(@class, "lemmaWgt-lemmaTitle-")]/div[@class="lemma-desc"]/text()'
 
 # 以下為內文
-'//div[@class="para"]
+'//div[@class="para"]'
 ```
 其它看程式。
 
