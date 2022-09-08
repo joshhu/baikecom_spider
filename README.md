@@ -74,7 +74,7 @@ CONTAINER ID   IMAGE           COMMAND                  CREATED        STATUS   
 5c25ce505c5c   mongo-express   "tini -- /docker-ent…"   17 hours ago   Up 17 hours   0.0.0.0:8081->8081/tcp, :::8081->8081/tcp       goofy_sanderson
 b7f23f7334aa   mongo           "docker-entrypoint.s…"   19 hours ago   Up 19 hours   0.0.0.0:27017->27017/tcp, :::27017->27017/tcp   baike
 ```
-將`baikecom_spider`放在`scrapy`的專案資料夾中，執行`scrapy crawl baikecom`即可。
+將`baikecom_spider`放在你的專案資料夾中，執行`scrapy crawl baikecom`即可。
 
 ## 四、參考資料
 * [Mongodb在Python下的使用](https://www.1ju.org/mongodb/mongodb-python)
