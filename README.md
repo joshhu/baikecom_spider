@@ -67,6 +67,13 @@
 **每小時約15萬個詞條**。本來怕檔案太大，因此`mongodb`本來放在32TB的HDD中，後來發現百度號稱3000萬個詞條，最多佔硬碟空間約150GB，因此改放在SSD中，NVME SSD的大小為4TB。簡體加繁體約300GB，因此應該可以放下。
 
 ## 4、執行
+先確定`mongodb`和`mongo-express`都已經啟動：
+```shell=
+$ docker ps                                                 [18:30:05]
+CONTAINER ID   IMAGE           COMMAND                  CREATED        STATUS        PORTS                                           NAMES
+5c25ce505c5c   mongo-express   "tini -- /docker-ent…"   17 hours ago   Up 17 hours   0.0.0.0:8081->8081/tcp, :::8081->8081/tcp       goofy_sanderson
+b7f23f7334aa   mongo           "docker-entrypoint.s…"   19 hours ago   Up 19 hours   0.0.0.0:27017->27017/tcp, :::27017->27017/tcp   baike
+```
 將`baikecom_spider`放在`scrapy`的專案資料夾中，執行`scrapy crawl baikecom`即可。
 
 ## 四、參考資料
