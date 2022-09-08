@@ -11,16 +11,16 @@
 * scrapy
 
 ### 2、Docker環境
-由於mongodb的儲存希望持久化，因此將資料庫實際資料的部分存放在container之外。一開始使用bind mount對應到硬碟的某個資料夾，但發現把container殺掉之後再開新的`mongodb` container，就無法找到`collection`，因此使用docker的`volume`進行存放。建立步驟如下
+由於`mongodb`的儲存希望持久化，因此將資料庫實際資料的部分存放在container之外。一開始使用bind mount對應到硬碟的某個資料夾，但發現把container殺掉之後再開新的`mongodb` container，就無法找到`collection`，因此使用docker的`volume`進行存放。建立步驟如下
 
 1. 建立docker volume，`docker volume create mongodb_storage`
 2. 建立docker network，讓`mongodb`和`mongo-express`之間可以互相溝通。指令：`docker network create mongodb`
 3. 啟動`mongodb`的container，指令：`docker run -d --name baike -p 27017:27017 -v mongodb_storage:/data/db --network mongodb mongo`
-4. 啟動mongo-express，指令如下`docker run -d --name mongo-express -p 8081:8081 --network mongodb -e ME_CONFIG_MONGODB_SERVER=baike mongo-express`
+4. 啟動`mongo-express`，指令如下`docker run -d --name mongo-express -p 8081:8081 --network mongodb -e ME_CONFIG_MONGODB_SERVER=baike mongo-express`
 
 以上步驟即完成了`mongodb`和`mongo-express`的啟動。
 
-## 三、scrapy架構
+## 三、`scrapy`架構
 ```
 ├── baikecom_spider
 │   ├── __init__.py
@@ -33,6 +33,18 @@
 │       ├── __init__.py
 ├── baikecom_spider.log
 └── scrapy.cfg
+```
+需要注意的是，百度百科有兩個版本，一個是簡體版，網址是`baike.baidu.com`，另一個是繁體版，網址是`baihe.baidu.hk`，兩者的網頁結構不同，因此需要分別爬取。主要還是Title和Subtitle的不一樣。分別如下：
+
+**繁體版百度香港**
+```xpath=
+'//dd[@class="lemmaWgt-lemmaTitle-title"]/h1/text()'
+'//dd[@class="lemmaWgt-lemmaTitle-title"]/h2/text()'
+```
+**簡體版百度百科**
+```xpath=
+'//dd[contains(@class, "lemmaWgt-lemmaTitle-title") and contains(@class, "J-lemma-title")]/span/h1/text()'
+'//dl[contains(@class, "lemmaWgt-lemmaTitle") and contains(@class, "lemmaWgt-lemmaTitle-")]/div[@class="lemma-desc"]/text()'
 ```
 其它看程式
 
