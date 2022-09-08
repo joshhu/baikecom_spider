@@ -39,7 +39,7 @@ class BaikecomSpider(scrapy.Spider):
         yield baike_item
 
         items = set(response.xpath(
-            '//a[contains(@href, "/item/")]/@href').re(r'/item/[A-Za-z0-9%\u4E00-\u9FA5]+'))
+            '//a[contains(@href, "/item/")]/@href').re(r'/item/[A-Za-z0-9%#?=/\u4E00-\u9FA5]+'))
         for item in items:
             new_url = 'https://baike.baidu.com' + urllib.parse.unquote(item)
             yield scrapy.Request(new_url, callback=self.parse)
