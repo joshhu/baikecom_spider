@@ -52,7 +52,7 @@
 其它看程式。
 
 ## 3、性能
-**每小時約15萬個詞條**。本來怕檔案太大，因此`mongodb`本來放在32TB的HDD中，後來發現百度號稱3000萬個詞條，最多佔硬碟空間約100GB，因此改放在SSD中，NVME SSD的大小為4TB
+**每小時約15萬個詞條**。本來怕檔案太大，因此`mongodb`本來放在32TB的HDD中，後來發現百度號稱3000萬個詞條，最多佔硬碟空間約150GB，因此改放在SSD中，NVME SSD的大小為4TB。簡體加繁體約300GB，因此應該可以放下。
 
 ## 四、參考資料
 * [Mongodb在Python下的使用](https://www.1ju.org/mongodb/mongodb-python)
