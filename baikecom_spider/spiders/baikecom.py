@@ -28,7 +28,7 @@ class BaikecomSpider(scrapy.Spider):
         baike_item['name'] = head_title
         baike_item['text'] = ''
         # for para in response.xpath('//div[@class="main-content"]/div[@class="para"] |//div[@class="main_tab main_tab-defaultTab  curTab"]/div[@class="para"] | //div[@class="lemma-summary"]/div[@class="para"]'):
-        for para in response.xpath('//div[@class="para"] '):
+        for para in response.xpath('//div[@class="para"]'):
             texts = para.xpath('.//text()').extract()
             for text in texts:
                 baike_item['text'] += text.strip('\n')

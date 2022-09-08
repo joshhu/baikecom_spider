@@ -41,13 +41,21 @@
 
 **繁體版百度香港**
 ```xpath=
+# 以下為title及subtitle
 '//dd[@class="lemmaWgt-lemmaTitle-title"]/h1/text()'
 '//dd[@class="lemmaWgt-lemmaTitle-title"]/h2/text()'
+
+# 以下為內文
+'//div[@class="main-content"]/div[@class="para"] |//div[@class="main_tab main_tab-defaultTab  curTab"]/div[@class="para"] | //div[@class="lemma-summary"]/div[@class="para"]'
 ```
 **簡體版百度百科**
 ```xpath=
+# 以下為title及subtitle
 '//dd[contains(@class, "lemmaWgt-lemmaTitle-title") and contains(@class, "J-lemma-title")]/span/h1/text()'
 '//dl[contains(@class, "lemmaWgt-lemmaTitle") and contains(@class, "lemmaWgt-lemmaTitle-")]/div[@class="lemma-desc"]/text()'
+
+# 以下為內文
+'//div[@class="para"]
 ```
 其它看程式。
 
