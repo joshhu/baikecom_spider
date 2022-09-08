@@ -27,20 +27,11 @@
 │   ├── items.py
 │   ├── middlewares.py
 │   ├── pipelines.py
-│   ├── __pycache__
-│   │   ├── __init__.cpython-38.pyc
-│   │   ├── items.cpython-38.pyc
-│   │   ├── pipelines.cpython-38.pyc
-│   │   └── settings.cpython-38.pyc
 │   ├── settings.py
 │   └── spiders
 │       ├── baikecom.py
 │       ├── __init__.py
-│       └── __pycache__
-│           ├── baikecom.cpython-38.pyc
-│           └── __init__.cpython-38.pyc
 ├── baikecom_spider.log
-├── README.md
 └── scrapy.cfg
 ```
 其它看程式
