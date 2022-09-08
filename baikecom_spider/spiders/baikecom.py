@@ -17,8 +17,12 @@ class BaikecomSpider(scrapy.Spider):
         # sub_title = ''.join(response.xpath('//dd[@class="lemmaWgt-lemmaTitle-title"]/h2/text()').getall()).replace('/', '')
 
         # 下面為百度百科中文的xpath
-        head_title = ''.join(response.xpath('//dd[contains(@class, "lemmaWgt-lemmaTitle-title") and contains(@class, "J-lemma-title")]/span/h1/text()').getall()).replace('/', '')
-        sub_title = ''.join(response.xpath('//dl[contains(@class, "lemmaWgt-lemmaTitle") and contains(@class, "lemmaWgt-lemmaTitle-")]/div[@class="lemma-desc"]/text()').getall()).replace('/', '')
+        # head_title = ''.join(response.xpath('//dd[contains(@class, "lemmaWgt-lemmaTitle-title") and contains(@class, "J-lemma-title")]/span/h1/text()').getall()).replace('/', '')
+        # sub_title = ''.join(response.xpath('//dl[contains(@class, "lemmaWgt-lemmaTitle") and contains(@class, "lemmaWgt-lemmaTitle-")]/div[@class="lemma-desc"]/text()').getall()).replace('/', '')
+        
+        head_title = ''.join(response.xpath('//dd[contains(@class, "lemmaWgt-lemmaTitle-title J-lemma-title")]/span/h1/text()').getall()).replace('/', '')
+        sub_title = ''.join(response.xpath('//dl[contains(@class, "lemmaWgt-lemmaTitle lemmaWgt-lemmaTitle-")]/div[@class="lemma-desc"]/text()').getall()).replace('/', '')
+
         title = head_title + sub_title
         
         baike_item = BaikecomSpiderItem()

@@ -10,6 +10,9 @@
 * python 3.8.13
 * scrapy, `pip install scrapy`
 * pymongo, `pip install pymongo`
+* xpath helper，用來查看網頁的xpath，是google chrome的擴充套件。
+![](https://i.imgur.com/i45UqLA.png)
+
 
 其它就正常`conda`的套件。
 
@@ -24,7 +27,9 @@
 
 以上步驟即完成了`mongodb`和`mongo-express`的啟動。
 
-## 三、`scrapy`架構
+![](https://i.imgur.com/7eg7cYL.png)
+
+
 ## 1、`scrapy`架構
 ```
 ├── baikecom_spider
@@ -55,8 +60,8 @@
 **簡體版百度百科**
 ```xpath=
 # 以下為title及subtitle
-'//dd[contains(@class, "lemmaWgt-lemmaTitle-title") and contains(@class, "J-lemma-title")]/span/h1/text()'
-'//dl[contains(@class, "lemmaWgt-lemmaTitle") and contains(@class, "lemmaWgt-lemmaTitle-")]/div[@class="lemma-desc"]/text()'
+'//dd[contains(@class, "lemmaWgt-lemmaTitle-title J-lemma-title")]/span/h1/text()'
+'//dl[contains(@class, "lemmaWgt-lemmaTitle lemmaWgt-lemmaTitle-")]/div[@class="lemma-desc"]/text()'
 
 # 以下為內文
 '//div[@class="para"]'
